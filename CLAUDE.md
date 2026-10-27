@@ -7,6 +7,11 @@ Ez a mappa egy git-repó. Csak kód és konfiguráció kerül gitbe, adat és ki
 - A környezet NEM a OneDrive-ban van: a `UV_PROJECT_ENVIRONMENT` változó (a projekt `.claude/settings.json`-jában) a `C:\venvs\raktari-munkaorak` mappára mutat. Ne hozz létre `.venv` mappát a OneDrive-ban.
 - `pyproject.toml` és `uv.lock` gitbe kerül, így a környezet bármikor újraépíthető (`uv sync`).
 
+## SQL-kapcsolat
+- Szerver: `mdbwh`, adatbázis: `OLAP_DAXELES` (pl. `factDurataActivitate`, `dimActivitatiDepozit`, `factColectari`). Csak olvasunk (`SELECT`).
+- A belépési adatok (SQL-felhasználó, jelszó) a `C:\Users\<felhasznalo>\.config\raktari-munkaorak\db.env` fájlban vannak – a OneDrive-on és a giten kívül. Minta: `db.env.example`.
+- A jelszót Karesz írja be. A kód csak beolvassa; jelszót soha ne írj ki képernyőre, logba, fájlba, és ne tedd parancssori paraméterbe.
+
 ## Felépítés
 - `src/config.py` – minden útvonal egy helyen; a forrásadat: `../forrasok/`, az üzleti kimenet: `../kimenetek/`
 - `src/` – szkriptek, mindegyik önállóan futtatható
